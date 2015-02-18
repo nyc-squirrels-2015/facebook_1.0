@@ -10,8 +10,12 @@
       <input type="text" name = "photo_url" placeholder="photo_url">
       <input type="submit">
     </form>
-     <a href="#"><img class="profile_pic" src="<%=@user.photo_url%>"></a>
-    <div>Click on the image to edit it</div>
+    <div class="image">
+       <a href="#" class="change_pic">
+        <img src="<%=@user.photo_url%>" class="profile_pic">
+        <div class="textimage">Click on the image to edit it</div>
+       </a>
+    </div>
   </div>
 <% else %>
   <h2><%= @user.name%></h2>

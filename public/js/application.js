@@ -5,10 +5,10 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 
-  $('.profile_pic').on('click', function(event){
+  $('.change_pic').on('click', function(event){
     console.log("im here");
     event.preventDefault();
-    $('.hidden_form').show();
+    $('.hidden_form').toggle("slow");
   })
 
   $('.hidden_form').on("submit", function(event){
@@ -26,9 +26,23 @@ $(document).ready(function() {
     })
   })
 
+
+
   $('.photo_displayed').on('click', function(event){
     event.preventDefault();
-    $target = $(event.target)
+    photo.like= $(this).attr('name');
+    photo.pic_id = $(this).attr('value');
+    $target = $(event.target);
+    console.log('here')
+    console.log($target.attr('href'))
+    $.ajax({
+      url: $target.attr('href'),
+      type: "post",
+      data : photo,
+      success: function(response){
+        $target.attr('src', response.url)
+      }
+    })
 
   })
 

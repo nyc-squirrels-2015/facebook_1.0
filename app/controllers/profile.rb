@@ -9,7 +9,6 @@ end
 
 get '/profile/:id/change_password' do
     @user = User.find(params[:id])
-    @recommendations =
     erb :'profile/edit'
 end
 

@@ -10,9 +10,9 @@ post '/authenticate/login' do
   @user = User.find_by(email: params[:email])
   if @user && @user.try(:authenticate, params[:password])
     session[:user_id] = @user.id
-    erb :'profile/profile'
+    redirect "profile/#{@user.id}"
   else
-    erb :'auth/login'
+    redirect '/authenticate/login'
   end
 end
 
@@ -28,7 +28,7 @@ post '/authenticate/signup' do
   if name && email && password == password_conf
     @user = User.create(name: name, email: email, photo_url: params[:photo_url], password: password, password_confirmation: password_conf)
     session[:user_id] = @user.id
-    erb :'profile/profile'
+    redirect "profile/#{@user.id}"
   else
     redirect '/authenticate/signup'
   end
