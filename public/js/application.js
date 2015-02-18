@@ -8,18 +8,31 @@ $(document).ready(function() {
   $('.profile_pic').on('click', function(event){
     console.log("im here");
     event.preventDefault();
-    $('.hidden_form').toggle();
+    $('.hidden_form').show();
   })
 
-  $('.hidden_form').submit(function(){
+  $('.hidden_form').on("submit", function(event){
     event.preventDefault();
+    $('.hidden_form').hide();
+    var $target = $(event.target)
+    console.log("hey hey")
     $.ajax({
-      data: this.serialize(),
-      url: this.attr('action'),
-      type: this.attr('method'),
+      data: $target.serialize(),
+      url: $target.attr('action'),
+      type: "put",
       success: function(response){
-        $('#cadre img').attr('href', response.url )
+        $(".profile_pic").attr('src', response.url)
       }
     })
   })
+
+  $('.photo_displayed').on('click', function(event){
+    event.preventDefault();
+    $target = $(event.target)
+
+  })
+
+
+
+  // display images on the main page
 });

@@ -5,13 +5,13 @@
   <a href="#"><h2 class="edit_name"><%= @user.name%></h2></a>
   <a href="/profile/<%=@user.id%>/change_password"> Change your password </a>
   <div id="cadre">
-     <img class="profile_pic" src="<%=@user.photo_url%>">
-    <div>Click on the image to edit it</div>
     <form action="/profile/<%= @user.id%>/update_image" method="post" class="hidden_form" style="display:none">
       <input type="hidden" name="_method" value="put">
       <input type="text" name = "photo_url" placeholder="photo_url">
       <input type="submit">
     </form>
+     <a href="#"><img class="profile_pic" src="<%=@user.photo_url%>"></a>
+    <div>Click on the image to edit it</div>
   </div>
 <% else %>
   <h2><%= @user.name%></h2>
