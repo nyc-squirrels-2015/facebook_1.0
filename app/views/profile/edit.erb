@@ -1,4 +1,5 @@
 <form action='/profile/<%=@user.id%>/change_password' method="post">
+  <input type="hidden" name="_method" value="put">
   <input type="password" name="password" placeholder="Edit password">
   <input type="password" name="password_confirmation" placeholder="Password confirmation">
   <input type="submit">

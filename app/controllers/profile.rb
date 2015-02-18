@@ -8,28 +8,31 @@ get '/profile/:id' do
 end
 
 get '/profile/:id/change_password' do
-  if session[:user_id] == params[:id]
     @user = User.find(params[:id])
+    @recommendations =
     erb :'profile/edit'
-  else
-    redirect "/profile/#{params[:id]}"
-  end
 end
 
 put '/profile/:id/change_password' do
   if params[:password] == params[:password_confirmation]
+    puts params[:password]
+    puts params[:password_confirmation]
     user = User.find(params[:id])
     user.update_attributes(password: params[:password], password_confirmation: params[:password_confirmation])
-    erb :'profile/profile'
+    redirect "/profile/#{params[:id]}"
   else
-    @message = "Passwords don't match"
     redirect "/profile/#{params[:id]}/change_password"
   end
 end
 
-get '/profile/:id/change_name' do
+put '/profile/:id/change_name' do
   user = User.find(params[:id])
   user.update_attributes(name: params[:name])
+end
+
+put '/profile/:id/update_image' do
+  user = User.find(params[:id])
+  user.update_attributes(photo_url: params[:photo_url])
   content_type :json
-  return {}
+  {url: params[:photo_url]}.to_json
 end

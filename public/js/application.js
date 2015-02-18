@@ -4,4 +4,22 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+
+  $('.profile_pic').on('click', function(event){
+    console.log("im here");
+    event.preventDefault();
+    $('.hidden_form').toggle();
+  })
+
+  $('.hidden_form').submit(function(){
+    event.preventDefault();
+    $.ajax({
+      data: this.serialize(),
+      url: this.attr('action'),
+      type: this.attr('method'),
+      success: function(response){
+        $('#cadre img').attr('href', response.url )
+      }
+    })
+  })
 });
