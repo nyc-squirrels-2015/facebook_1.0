@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
   def unvoted_photos
     votes = self.votes
-    @voted_photos = votes.each{|vote| vote.photo_id}
-    @photos = Photo.all.each{|photo| photo.id}
+    @voted_photos = votes.map{|vote| vote.photo_id}
+    @photos = Photo.all.map{|photo| photo.id}
     @photos-@voted_photos
   end
 end

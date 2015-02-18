@@ -12,18 +12,18 @@ $(document).ready(function() {
   })
 
   $('.hidden_form').on("submit", function(event){
-    event.preventDefault();
-    $('.hidden_form').hide();
-    var $target = $(event.target)
-    console.log("hey hey")
-    $.ajax({
-      data: $target.serialize(),
-      url: $target.attr('action'),
-      type: "put",
-      success: function(response){
-        $(".profile_pic").attr('src', response.url)
-      }
-    })
+      event.preventDefault();
+      $('.hidden_form').hide();
+      var $target = $(event.target)
+      console.log("hey hey")
+      $.ajax({
+        data: $target.serialize(),
+        url: $target.attr('action'),
+        type: "put",
+        success: function(response){
+          $(".profile_pic").attr('src', response.url)
+        }
+      })
   })
 
 
@@ -40,7 +40,15 @@ $(document).ready(function() {
       type: "post",
       data : photo,
       success: function(response){
-        $target.attr('src', response.url)
+        $('.display_pic').hide();
+        $('.display_pic').attr('src', response.url);
+        $('.photo_displayed').attr('value', response.new_id);
+        $('.display_pic').show();
+        if(response.redirect) {
+
+         $('.gohome').toggle();
+         $('.photo_displayed').hide();
+      }
       }
     })
 

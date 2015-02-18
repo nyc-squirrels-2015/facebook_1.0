@@ -3,5 +3,6 @@
 I don't like that </a>
 <a href="/display/photo"  name="like" value="<%=@photo.id%>" class="photo_displayed">
 I like that </a>
+<a href="/profile/<%=session[:user_id]%>" class="gohome" style="display:none"> Go Home </a>
 
-<img src="<%=@photo.photo_url%>">
+<img src="<%=@photo.photo_url%>" class="display_pic">
