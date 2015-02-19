@@ -128,7 +128,7 @@ h2 {
   text-decoration: underline;
 }
 
-.photo_displayed {
+.photo_displayed, .change_pass {
   background-color: #3b5998;
   margin-top: 200px;
   position:relative;
@@ -136,6 +136,12 @@ h2 {
   color:white;
   padding: 10px;
   border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.change_pass {
+  margin-left: 800px;
 }
 
 .input {
@@ -151,4 +157,9 @@ h1 {
   margin-right: -20px;
   margin-bottom: -40px;
   color:white;
+}
+
+.image {
+  margin-left: 200px;
+  margin-top: 20px;
 }

@@ -6,18 +6,21 @@
   <a href="/profile/<%=@user.id%>/change_password" class="change_pass"> Change your password </a>
   <div id="cadre">
 
-    <form action="/profile/<%= @user.id%>/update_image" method="post" class="hidden_form" style="display:none">
+    <form action="/profile/<%= @user.id%>/update_image" method="post" class="hidden_form" style="display:none" pure-form>
+      <fieldset>
       <input type="hidden" name="_method" value="put">
-      <input type="text" name = "photo_url" placeholder="photo_url">
+      <input type="text" name = "photo_url" placeholder="photo_url" class="input">
       <input type="submit">
+    </fieldset>
     </form>
 
-    <form action='/profile/<%=@user.id%>/change_password' method="post" class="hidden_password" style="display:none">
+    <form action='/profile/<%=@user.id%>/change_password' method="post" class="hidden_password" style="display:none" class="pure-form">
+      <fieldset>
       <input type="hidden" name="_method" value="put">
-      <input type="password" name="password" placeholder="Edit password">
-      <input type="password" name="password_confirmation" placeholder="Password confirmation">
+      <input type="password" name="password" placeholder="Edit password" class="input">
+      <input type="password" name="password_confirmation" placeholder="Password confirmation" class="input">
       <input type="submit">
-      <p><%= @message if @message %></p>
+      </fieldset>
     </form>
 
 
