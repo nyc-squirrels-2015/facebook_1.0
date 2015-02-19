@@ -1,0 +1,20 @@
+<div id="recommendations">
+<h2>I know you want this</h2>
+<ul>
+  <% @best_seller.each do |rec| %>
+  <li><a href="<%= rec.url %>"><%= rec.name%></a> </li>
+  <%end%>
+</ul>
+
+<h2>You know I want'ya</h2>
+<ul>
+  <% @second.each do |rec| %>
+  <li><a href="<%= rec.url %>"><%= rec.name%></a> </li>
+  <%end%>
+</ul>
+
+<form action="/<%=session[:user_id]%>/recommendations/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete your profile">
+</form>
+</div>

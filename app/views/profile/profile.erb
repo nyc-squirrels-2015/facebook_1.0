@@ -3,16 +3,27 @@
 <% if @user.id == session[:user_id] %>
 
   <a href="#"><h2 class="edit_name"><%= @user.name%></h2></a>
-  <a href="/profile/<%=@user.id%>/change_password"> Change your password </a>
+  <a href="/profile/<%=@user.id%>/change_password" class="change_pass"> Change your password </a>
   <div id="cadre">
+
     <form action="/profile/<%= @user.id%>/update_image" method="post" class="hidden_form" style="display:none">
       <input type="hidden" name="_method" value="put">
       <input type="text" name = "photo_url" placeholder="photo_url">
       <input type="submit">
     </form>
+
+    <form action='/profile/<%=@user.id%>/change_password' method="post" class="hidden_password" style="display:none">
+      <input type="hidden" name="_method" value="put">
+      <input type="password" name="password" placeholder="Edit password">
+      <input type="password" name="password_confirmation" placeholder="Password confirmation">
+      <input type="submit">
+      <p><%= @message if @message %></p>
+    </form>
+
+
     <div class="image">
        <a href="#" class="change_pic">
-        <img src="<%=@user.photo_url%>" class="profile_pic">
+        <img src="<%=@user.photo_url%>" class="profile_pic" alt="Click to change your image">
         <div class="textimage">Click on the image to edit it</div>
        </a>
     </div>

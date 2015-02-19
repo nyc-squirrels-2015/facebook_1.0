@@ -11,6 +11,7 @@ $(document).ready(function() {
     $('.hidden_form').toggle("slow");
   })
 
+
   $('.hidden_form').on("submit", function(event){
       event.preventDefault();
       $('.hidden_form').hide();
@@ -21,11 +22,32 @@ $(document).ready(function() {
         url: $target.attr('action'),
         type: "put",
         success: function(response){
+          $(".profile_pic").hide("slow")
           $(".profile_pic").attr('src', response.url)
+          $(".profile_pic").show("slow")
         }
       })
   })
 
+  $('.change_pass').on('click', function(event){
+    event.preventDefault();
+    $('.hidden_password').toggle("slow");
+  })
+
+
+  $('.hidden_password').on("submit", function(event){
+      event.preventDefault();
+      $('.hidden_password').hide("slow");
+      var $target = $(event.target)
+      $.ajax({
+        data: $target.serialize(),
+        url: $target.attr('action'),
+        type: "put",
+        success: function(response){
+          console.log("we made it ")
+        }
+      })
+  })
 
 
   $('.photo_displayed').on('click', function(event){

@@ -18,9 +18,8 @@ put '/profile/:id/change_password' do
     puts params[:password_confirmation]
     user = User.find(params[:id])
     user.update_attributes(password: params[:password], password_confirmation: params[:password_confirmation])
-    redirect "/profile/#{params[:id]}"
-  else
-    redirect "/profile/#{params[:id]}/change_password"
+    content_type :json
+    {hey: "hey"}.to_json
   end
 end
 
@@ -35,3 +34,4 @@ put '/profile/:id/update_image' do
   content_type :json
   {url: params[:photo_url]}.to_json
 end
+
